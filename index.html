@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manilist 🌟</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f5f5f2;
+  color: #171717;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+}
+
+.app {
+  max-width: 760px;
+  margin: auto;
+  padding: 30px 16px 50px;
+}
+
+header {
+  padding: 5px 4px 22px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #999;
+  font-weight: 800;
+}
+
+h1 {
+  font-size: 38px;
+  letter-spacing: -1.7px;
+  margin: 5px 0 2px;
+}
+
+header p {
+  margin: 0;
+  color: #777;
+}
+
+.hero {
+  background: #111;
+  color: white;
+  border-radius: 24px;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.hero-number {
+  font-size: 36px;
+  font-weight: 850;
+}
+
+.hero-label {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.ring {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #f2b400;
+  color: #111;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.goal {
+  background: white;
+  border: 1px solid #e7e7e2;
+  border-radius: 20px;
+  margin: 12px 0;
+  overflow: hidden;
+  box-shadow: 0 4px 16px #00000008;
+}
+
+.goal-top {
+  padding: 18px;
+  cursor: pointer;
+}
+
+.goal-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.goal-title {
+  font-size: 18px;
+  font-weight: 850;
+}
+
+.goal-target {
+  color: #777;
+  font-size: 14px;
+  line-height: 1.35;
+  margin-top: 5px;
+}
+
+.stars {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.star {
+  border: 0;
+  background: none;
+  padding: 1px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.star.empty {
+  filter: grayscale(1);
+  opacity: .28;
+}
+
+.bar {
+  height: 5px;
+  background: #ededeb;
+  border-radius: 8px;
+  margin-top: 14px;
+  overflow: hidden;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  background: #f2b400;
+  border-radius: 8px;
+}
+
+.meta {
+  font-size: 12px;
+  color: #999;
+  margin-top: 7px;
+}
+
+.details {
+  display: none;
+  border-top: 1px solid #e7e7e2;
+  padding: 10px 18px 16px;
+  background: #fcfcfa;
+}
+
+.goal.open .details {
+  display: block;
+}
+
+.milestone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.milestone input {
+  width: 19px;
+  height: 19px;
+  accent-color: #111;
+}
+
+.milestone.done span {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.small {
+  border: 0;
+  border-radius: 11px;
+  padding: 10px 12px;
+  background: #eee;
+  font-weight: 750;
+}
+
+.add-goal {
+  width: 100%;
+  border: 0;
+  border-radius: 14px;
+  padding: 15px;
+  background: #111;
+  color: white;
+  font-weight: 800;
+  margin-top: 14px;
+}
+
+.footer {
+  text-align: center;
+  color: #aaa;
+  font-size: 11px;
+  margin-top: 18px;
+}
+
+@media(max-width:560px) {
+  h1 {
+    font-size: 34px;
+  }
+
+  .goal-row {
+    display: block;
+  }
+
+  .stars {
+    margin-top: 12px;
+  }
+
+  .star {
+    font-size: 29px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="app">
+
+<header>
+<div class="eyebrow">MY VISION</div>
+<h1>Manilist 🌟</h1>
+<p>One star at a time.</p>
+</header>
+
+<section class="hero">
+<div>
+<div class="hero-number" id="totalStars">1</div>
+<div class="hero-label">stars earned</div>
+</div>
+
+<div class="ring" id="overallPercent">0%</div>
+</section>
+
+<section id="goals"></section>
+
+<button class="add-goal" onclick="addGoal()">
+＋ Add a goal
+</button>
+
+<div class="footer">
+Your progress is saved on this device.
+</div>
+
+</main>
+
+<script>
+
+const goals = [
+
+{
+title:"🎨 Creative Career",
+target:"Move toward an Art Director / Creative Director role",
+milestones:[
+"Leadership",
+"Creative strategy",
+"Concept development",
+"Senior role",
+"Creative direction"
+],
+stars:0
+},
+
+{
+title:"🎬 Portfolio & Showreel",
+target:"Build a kick-ass portfolio & showreel",
+milestones:[
+"Rituals of Tea",
+"Untangle",
+"Small video #1",
+"Small video #2",
+"Small video #3",
+"Small video #4",
+"Portfolio website",
+"Showreel",
+"Launch"
+],
+stars:1
+},
+
+{
+title:"💼 Career Move",
+target:"Move into a role with greater creative responsibility",
+milestones:[
+"Research companies",
+"Network with creative leaders",
+"Applications",
+"Interviews",
+"New role"
+],
+stars:0
+},
+
+{
+title:"💰 Income",
+target:"Reach €65–85k+",
+milestones:[
+"Strengthen portfolio",
+"Target higher-level roles",
+"Applications",
+"Negotiate",
+"Reach target income"
+],
+stars:0
+},
+
+{
+title:"🏠 Home",
+target:"Buy the home we want",
+milestones:[
+"Savings plan",
+"Mortgage preparation",
+"House search",
+"Mortgage approval",
+"Purchase"
+],
+stars:0
+},
+
+{
+title:"💵 Financial Security",
+target:"Build substantial long-term financial security",
+milestones:[
+"Savings",
+"Pension",
+"Increase income",
+"Financial planning",
+"Long-term security"
+],
+stars:0
+},
+
+{
+title:"🧠 Personal Development",
+target:"Become calmer, more confident and resilient",
+milestones:[
+"Choose approach",
+"Start",
+"Build routines",
+"Track progress",
+"Make it sustainable"
+],
+stars:0
+},
+
+{
+title:"🎓 Creative Skills",
+target:"Become a stronger creative leader, not just an executor",
+milestones:[
+"Art direction",
+"Storytelling",
+"Ideation",
+"Presentation",
+"Leadership"
+],
+stars:0
+},
+
+{
+title:"❤️ Life",
+target:"Build the life I actually want with the people I love — including getting a dog 🐕",
+milestones:[
+"Home",
+"Get a dog 🐕",
+"Experiences",
+"Balance",
+"Relationships"
+],
+stars:0
+}
+
+];
+
+function render() {
+
+let html = "";
+let total = 0;
+let max = 0;
+
+goals.forEach((goal,index) => {
+
+let maximum = Math.max(5,goal.milestones.length);
+
+total += goal.stars;
+max += maximum;
+
+let percent = Math.min(
+100,
+Math.round(goal.stars / maximum * 100)
+);
+
+html += `
+
+<article class="goal" id="goal${index}">
+
+<div class="goal-top"
+onclick="openGoal(${index})">
+
+<div class="goal-row">
+
+<div>
+
+<div class="goal-title">
+${goal.title}
+</div>
+
+<div class="goal-target">
+${goal.target}
+</div>
+
+</div>
+
+<div class="stars">
+
+${Array.from(
+{length:maximum},
+(_,s)=>`
+
+<button
+class="star ${s < goal.stars ? "" : "empty"}"
+onclick="event.stopPropagation();toggleStar(${index},${s})">
+
+${s < goal.stars ? "🌟" : "☆"}
+
+</button>
+
+`).join("")}
+
+</div>
+
+</div>
+
+<div class="bar">
+<i style="width:${percent}%"></i>
+</div>
+
+<div class="meta">
+${goal.stars}/${maximum} stars
+</div>
+
+</div>
+
+<div class="details">
+
+${goal.milestones.map(
+m=>`
+<div class="milestone">
+<input type="checkbox">
+<span>${m}</span>
+</div>
+`
+).join("")}
+
+<div class="actions">
+
+<button
+class="small"
+onclick="addMilestone(${index})">
+
+＋ Milestone
+
+</button>
+
+</div>
+
+</div>
+
+</article>
+`;
+
+});
+
+document.getElementById("goals").innerHTML = html;
+
+document.getElementById("totalStars").textContent =
+total + " 🌟";
+
+let percent =
+max ? Math.round(total / max * 100) : 0;
+
+document.getElementById("overallPercent").textContent =
+percent + "%";
+
+}
+
+function openGoal(index) {
+
+document
+.getElementById("goal"+index)
+.classList.toggle("open");
+
+}
+
+function toggleStar(index,star) {
+
+let number = star + 1;
+
+if(goals[index].stars === number) {
+
+goals[index].stars = star;
+
+} else {
+
+goals[index].stars = number;
+
+}
+
+render();
+
+}
+
+function addMilestone(index) {
+
+let milestone = prompt("What milestone would you like to add?");
+
+if(milestone) {
+
+goals[index].milestones.push(milestone);
+
+render();
+
+}
+
+}
+
+function addGoal() {
+
+let title = prompt("Goal name:");
+
+if(!title) return;
+
+let target = prompt("What is the end goal?");
+
+goals.push({
+
+title:title,
+
+target:target || "",
+
+milestones:[],
+
+stars:0
+
+});
+
+render();
+
+}
+
+render();
+
+</script>
+
+</body>
+</html>
