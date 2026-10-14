@@ -1,573 +1,102 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manilist 🌟</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7f7f2">
+<title>Manilist — Grow what matters.</title>
 <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background: #f5f5f2;
-  color: #171717;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
-}
-
-.app {
-  max-width: 760px;
-  margin: auto;
-  padding: 30px 16px 50px;
-}
-
-header {
-  padding: 5px 4px 22px;
-}
-
-.eyebrow {
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: #999;
-  font-weight: 800;
-}
-
-h1 {
-  font-size: 38px;
-  letter-spacing: -1.7px;
-  margin: 5px 0 2px;
-}
-
-header p {
-  margin: 0;
-  color: #777;
-}
-
-.hero {
-  background: #111;
-  color: white;
-  border-radius: 24px;
-  padding: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 18px;
-}
-
-.hero-number {
-  font-size: 36px;
-  font-weight: 850;
-}
-
-.hero-label {
-  font-size: 12px;
-  color: #aaa;
-}
-
-.ring {
-  width: 76px;
-  height: 76px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: #f2b400;
-  color: #111;
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.goal {
-  background: white;
-  border: 1px solid #e7e7e2;
-  border-radius: 20px;
-  margin: 12px 0;
-  overflow: hidden;
-  box-shadow: 0 4px 16px #00000008;
-}
-
-.goal-top {
-  padding: 18px;
-  cursor: pointer;
-}
-
-.goal-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.goal-title {
-  font-size: 18px;
-  font-weight: 850;
-}
-
-.goal-target {
-  color: #777;
-  font-size: 14px;
-  line-height: 1.35;
-  margin-top: 5px;
-}
-
-.stars {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.star {
-  border: 0;
-  background: none;
-  padding: 1px;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.star.empty {
-  filter: grayscale(1);
-  opacity: .28;
-}
-
-.bar {
-  height: 5px;
-  background: #ededeb;
-  border-radius: 8px;
-  margin-top: 14px;
-  overflow: hidden;
-}
-
-.bar i {
-  display: block;
-  height: 100%;
-  background: #f2b400;
-  border-radius: 8px;
-}
-
-.meta {
-  font-size: 12px;
-  color: #999;
-  margin-top: 7px;
-}
-
-.details {
-  display: none;
-  border-top: 1px solid #e7e7e2;
-  padding: 10px 18px 16px;
-  background: #fcfcfa;
-}
-
-.goal.open .details {
-  display: block;
-}
-
-.milestone {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 0;
-  font-size: 14px;
-}
-
-.milestone input {
-  width: 19px;
-  height: 19px;
-  accent-color: #111;
-}
-
-.milestone.done span {
-  text-decoration: line-through;
-  color: #aaa;
-}
-
-.actions {
-  display: flex;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.small {
-  border: 0;
-  border-radius: 11px;
-  padding: 10px 12px;
-  background: #eee;
-  font-weight: 750;
-}
-
-.add-goal {
-  width: 100%;
-  border: 0;
-  border-radius: 14px;
-  padding: 15px;
-  background: #111;
-  color: white;
-  font-weight: 800;
-  margin-top: 14px;
-}
-
-.footer {
-  text-align: center;
-  color: #aaa;
-  font-size: 11px;
-  margin-top: 18px;
-}
-
-@media(max-width:560px) {
-  h1 {
-    font-size: 34px;
-  }
-
-  .goal-row {
-    display: block;
-  }
-
-  .stars {
-    margin-top: 12px;
-  }
-
-  .star {
-    font-size: 29px;
-  }
-}
+:root{--bg:#f7f7f2;--card:#fff;--ink:#172019;--muted:#788078;--line:#e4e7df;--green:#42634a;--soft:#edf2eb;--accent:#dfe9dd;--shadow:0 10px 30px #18201810}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,Arial,sans-serif}
+button,input,textarea{font:inherit}button{border:0;cursor:pointer}
+.app{max-width:760px;margin:auto;padding:22px 18px 100px}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+.brand{font-weight:800;letter-spacing:-.04em;font-size:26px}.tag{color:var(--muted);font-size:12px;margin-top:2px}
+.iconbtn{width:42px;height:42px;border-radius:14px;background:#fff;box-shadow:var(--shadow);font-size:18px}
+h1{font-size:34px;letter-spacing:-.05em;margin:8px 0 6px}.sub{color:var(--muted);margin:0 0 24px;line-height:1.45}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;margin:28px 0 12px}
+.sectionhead h2{font-size:18px;margin:0;letter-spacing:-.02em}.link{color:var(--green);font-weight:700;background:none;padding:0}
+.grid{display:grid;gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow)}
+.garden{min-height:155px;position:relative;overflow:hidden}.garden h3{margin:0 0 5px;font-size:20px}.garden p{color:var(--muted);font-size:14px;margin:0;max-width:75%}
+.plant{height:72px;display:flex;align-items:flex-end;gap:4px;margin-top:10px}.stem{width:4px;background:#52715a;height:62px;border-radius:4px;margin-left:18px}.leaf{width:23px;height:13px;border-radius:100% 0 100% 0;background:#86a58a;transform:rotate(-28deg);margin-bottom:29px}.leaf.r{transform:scaleX(-1) rotate(-28deg);margin-left:-3px}.flower{font-size:23px;margin-bottom:45px}
+.pill{display:inline-flex;background:var(--soft);color:var(--green);padding:6px 9px;border-radius:999px;font-size:12px;font-weight:700;margin-top:12px}
+.topnav{display:flex;gap:8px;margin:0 0 20px;overflow:auto}.topnav button{white-space:nowrap;background:#fff;border:1px solid var(--line);padding:10px 14px;border-radius:999px;color:var(--muted);font-weight:650}.topnav button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.goal{display:flex;gap:14px;align-items:center}.goalplant{width:58px;height:58px;border-radius:18px;background:var(--soft);display:grid;place-items:center;font-size:29px}
+.goal h3{margin:0 0 4px}.goal p{margin:0;color:var(--muted);font-size:13px}
+.progress{height:7px;background:#edf0eb;border-radius:9px;overflow:hidden;margin-top:13px}.progress i{display:block;height:100%;background:#6f9274;border-radius:9px}
+.detailHead{display:flex;gap:12px;align-items:center;margin-bottom:18px}.back{background:none;font-size:24px}.detailTitle h1{font-size:29px;margin:0}.detailTitle p{margin:3px 0 0;color:var(--muted)}
+.hero{background:linear-gradient(160deg,#fff,#edf3eb);border-radius:28px;padding:22px;text-align:center;border:1px solid var(--line);margin-bottom:18px}.heroPlant{font-size:76px;line-height:1;margin:8px 0 14px}.bloom{background:var(--ink);color:#fff;border-radius:14px;padding:12px 18px;font-weight:750}
+.milestone{display:flex;align-items:center;gap:11px;padding:13px 0;border-bottom:1px solid var(--line)}.milestone:last-child{border-bottom:0}.milestone input{width:21px;height:21px;accent-color:var(--green)}.milestone span.done{text-decoration:line-through;color:var(--muted)}
+.ach{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.flowerIcon{font-size:28px}.ach small{display:block;color:var(--muted);margin-top:3px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.secondary{background:var(--soft);color:var(--green);padding:10px 13px;border-radius:12px;font-weight:700}
+.empty{color:var(--muted);padding:14px 0}.journalItem{display:flex;gap:13px;padding:15px 0;border-bottom:1px solid var(--line)}.journalItem strong{display:block}.journalItem small{color:var(--muted)}
+footer{position:fixed;bottom:0;left:0;right:0;background:#fffffff0;backdrop-filter:blur(18px);border-top:1px solid var(--line);padding:10px max(18px,calc((100vw - 760px)/2 + 18px));display:flex;justify-content:space-around}.tab{background:none;color:var(--muted);font-size:12px;font-weight:700}.tab.active{color:var(--green)}
+.modalBack{position:fixed;inset:0;background:#0006;display:flex;align-items:flex-end;z-index:10}.sheet{background:#fff;width:100%;max-width:760px;margin:auto;border-radius:28px 28px 0 0;padding:22px 18px 30px;max-height:88vh;overflow:auto}.sheet h2{margin:0 0 16px}.field{display:grid;gap:7px;margin:12px 0}.field label{font-size:13px;color:var(--muted);font-weight:700}.field input,.field textarea{border:1px solid var(--line);border-radius:13px;padding:12px;background:#fafbf8;outline:none}.field textarea{min-height:90px;resize:vertical}.primary{width:100%;padding:13px;border-radius:14px;background:var(--ink);color:#fff;font-weight:750;margin-top:10px}.cancel{width:100%;padding:12px;background:none;color:var(--muted)}
+@media(min-width:620px){.grid.two{grid-template-columns:1fr 1fr}.app{padding-top:32px}}
 </style>
 </head>
-
 <body>
-
-<main class="app">
-
-<header>
-<div class="eyebrow">MY VISION</div>
-<h1>Manilist 🌟</h1>
-<p>One star at a time.</p>
-</header>
-
-<section class="hero">
-<div>
-<div class="hero-number" id="totalStars">1</div>
-<div class="hero-label">stars earned</div>
-</div>
-
-<div class="ring" id="overallPercent">0%</div>
-</section>
-
-<section id="goals"></section>
-
-<button class="add-goal" onclick="addGoal()">
-＋ Add a goal
-</button>
-
-<div class="footer">
-Your progress is saved on this device.
-</div>
-
-</main>
-
+<div id="app"></div>
+<div id="modal"></div>
+<footer>
+<button class="tab" id="homeTab" onclick="showHome()">⌂<br>Garden</button>
+<button class="tab" id="journalTab" onclick="showJournal()">✿<br>Journal</button>
+<button class="tab" id="settingsTab" onclick="showSettings()">⚙<br>Settings</button>
+</footer>
 <script>
+const KEY="manilist-template-v1";
+const today=()=>new Date().toLocaleDateString("en-IE",{day:"numeric",month:"short",year:"numeric"});
+let state=JSON.parse(localStorage.getItem(KEY)||"null")||{
+ gardens:[
+ {id:"life",name:"My Life",emoji:"🌿",desc:"The things I want to grow in life.",goals:[
+  {id:"career",name:"Creative Career",desc:"Move toward creative leadership.",milestones:["Define next role","Build leadership experience","Move into a creative lead role"],done:[0],achievements:[]},
+  {id:"portfolio",name:"Portfolio & Showreel",desc:"Build work that represents the level I want.",milestones:["Rituals of Tea","Untangle","Small video #1","Small video #2","Portfolio website","Showreel","Launch"],done:[0],achievements:[{text:"Rituals of Tea completed",date:"14 Oct 2026"}]},
+  {id:"income",name:"Income",desc:"Build toward €65–85k+.",milestones:["Define target","Research roles","Apply strategically","Land the next role"],done:[],achievements:[]}
+ ]},
+ {id:"work",name:"Work",emoji:"💼",desc:"Projects worth remembering.",goals:[
+  {id:"rituals",name:"Rituals of Tea",desc:"A short film from concept to final.",milestones:["Concept","Storyboard","3D","Animation","Sound","Final film"],done:[0,1,2],achievements:[{text:"First full scene rendered",date:"14 Oct 2026"}]}
+ ]},
+ {id:"our",name:"Our Life",emoji:"🏡",desc:"Things we're building together.",goals:[
+  {id:"home",name:"Our Home",desc:"Find and buy the right home.",milestones:["Set target","Mortgage plan","Shortlist areas","View homes","Buy"],done:[],achievements:[]}
+ ]}
+ ]};
 
-const goals = [
-
-{
-title:"🎨 Creative Career",
-target:"Move toward an Art Director / Creative Director role",
-milestones:[
-"Leadership",
-"Creative strategy",
-"Concept development",
-"Senior role",
-"Creative direction"
-],
-stars:0
-},
-
-{
-title:"🎬 Portfolio & Showreel",
-target:"Build a kick-ass portfolio & showreel",
-milestones:[
-"Rituals of Tea",
-"Untangle",
-"Small video #1",
-"Small video #2",
-"Small video #3",
-"Small video #4",
-"Portfolio website",
-"Showreel",
-"Launch"
-],
-stars:1
-},
-
-{
-title:"💼 Career Move",
-target:"Move into a role with greater creative responsibility",
-milestones:[
-"Research companies",
-"Network with creative leaders",
-"Applications",
-"Interviews",
-"New role"
-],
-stars:0
-},
-
-{
-title:"💰 Income",
-target:"Reach €65–85k+",
-milestones:[
-"Strengthen portfolio",
-"Target higher-level roles",
-"Applications",
-"Negotiate",
-"Reach target income"
-],
-stars:0
-},
-
-{
-title:"🏠 Home",
-target:"Buy the home we want",
-milestones:[
-"Savings plan",
-"Mortgage preparation",
-"House search",
-"Mortgage approval",
-"Purchase"
-],
-stars:0
-},
-
-{
-title:"💵 Financial Security",
-target:"Build substantial long-term financial security",
-milestones:[
-"Savings",
-"Pension",
-"Increase income",
-"Financial planning",
-"Long-term security"
-],
-stars:0
-},
-
-{
-title:"🧠 Personal Development",
-target:"Become calmer, more confident and resilient",
-milestones:[
-"Choose approach",
-"Start",
-"Build routines",
-"Track progress",
-"Make it sustainable"
-],
-stars:0
-},
-
-{
-title:"🎓 Creative Skills",
-target:"Become a stronger creative leader, not just an executor",
-milestones:[
-"Art direction",
-"Storytelling",
-"Ideation",
-"Presentation",
-"Leadership"
-],
-stars:0
-},
-
-{
-title:"❤️ Life",
-target:"Build the life I actually want with the people I love — including getting a dog 🐕",
-milestones:[
-"Home",
-"Get a dog 🐕",
-"Experiences",
-"Balance",
-"Relationships"
-],
-stars:0
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function setTab(x){["homeTab","journalTab","settingsTab"].forEach(id=>document.getElementById(id).classList.remove("active"));if(x)document.getElementById(x).classList.add("active")}
+function gardenVisual(g){return `<div class="plant"><div class="stem"></div><div class="leaf"></div><div class="leaf r"></div>${g.goals.length>1?'<div class="leaf"></div>':''}<div class="flower">🌸</div></div>`}
+function showHome(){
+ setTab("homeTab"); app.innerHTML=`<div class="app"><header><div><div class="brand">manilist</div><div class="tag">Grow what matters.</div></div><button class="iconbtn" onclick="openAddGarden()">＋</button></header>
+ <div class="topnav"><button class="active">All gardens</button></div><h1>What are you growing?</h1><p class="sub">Choose what matters. Make a list. Watch it grow.</p>
+ <div class="grid">${state.gardens.map(gardenCard).join("")}</div>
+ <div class="sectionhead"><h2>Quick idea</h2></div><div class="card"><strong>Manilist is not a task manager.</strong><p class="sub" style="margin:6px 0 0">Use it for the milestones and achievements you actually want to remember.</p></div></div>`;
 }
-
-];
-
-function render() {
-
-let html = "";
-let total = 0;
-let max = 0;
-
-goals.forEach((goal,index) => {
-
-let maximum = Math.max(5,goal.milestones.length);
-
-total += goal.stars;
-max += maximum;
-
-let percent = Math.min(
-100,
-Math.round(goal.stars / maximum * 100)
-);
-
-html += `
-
-<article class="goal" id="goal${index}">
-
-<div class="goal-top"
-onclick="openGoal(${index})">
-
-<div class="goal-row">
-
-<div>
-
-<div class="goal-title">
-${goal.title}
-</div>
-
-<div class="goal-target">
-${goal.target}
-</div>
-
-</div>
-
-<div class="stars">
-
-${Array.from(
-{length:maximum},
-(_,s)=>`
-
-<button
-class="star ${s < goal.stars ? "" : "empty"}"
-onclick="event.stopPropagation();toggleStar(${index},${s})">
-
-${s < goal.stars ? "🌟" : "☆"}
-
-</button>
-
-`).join("")}
-
-</div>
-
-</div>
-
-<div class="bar">
-<i style="width:${percent}%"></i>
-</div>
-
-<div class="meta">
-${goal.stars}/${maximum} stars
-</div>
-
-</div>
-
-<div class="details">
-
-${goal.milestones.map(
-m=>`
-<div class="milestone">
-<input type="checkbox">
-<span>${m}</span>
-</div>
-`
-).join("")}
-
-<div class="actions">
-
-<button
-class="small"
-onclick="addMilestone(${index})">
-
-＋ Milestone
-
-</button>
-
-</div>
-
-</div>
-
-</article>
-`;
-
-});
-
-document.getElementById("goals").innerHTML = html;
-
-document.getElementById("totalStars").textContent =
-total + " 🌟";
-
-let percent =
-max ? Math.round(total / max * 100) : 0;
-
-document.getElementById("overallPercent").textContent =
-percent + "%";
-
-}
-
-function openGoal(index) {
-
-document
-.getElementById("goal"+index)
-.classList.toggle("open");
-
-}
-
-function toggleStar(index,star) {
-
-let number = star + 1;
-
-if(goals[index].stars === number) {
-
-goals[index].stars = star;
-
-} else {
-
-goals[index].stars = number;
-
-}
-
-render();
-
-}
-
-function addMilestone(index) {
-
-let milestone = prompt("What milestone would you like to add?");
-
-if(milestone) {
-
-goals[index].milestones.push(milestone);
-
-render();
-
-}
-
-}
-
-function addGoal() {
-
-let title = prompt("Goal name:");
-
-if(!title) return;
-
-let target = prompt("What is the end goal?");
-
-goals.push({
-
-title:title,
-
-target:target || "",
-
-milestones:[],
-
-stars:0
-
-});
-
-render();
-
-}
-
-render();
-
+function gardenCard(g){let total=g.goals.reduce((n,x)=>n+x.milestones.length,0),done=g.goals.reduce((n,x)=>n+x.done.length,0);return `<button class="card garden" onclick="showGarden('${g.id}')" style="text-align:left;width:100%"><h3>${g.emoji} ${g.name}</h3><p>${g.desc}</p>${gardenVisual(g)}<span class="pill">${done}/${total} milestones · ${g.goals.reduce((n,x)=>n+x.achievements.length,0)} blooms</span></button>`}
+function showGarden(id){let g=state.gardens.find(x=>x.id===id);setTab(null);app.innerHTML=`<div class="app"><div class="detailHead"><button class="back" onclick="showHome()">‹</button><div class="detailTitle"><h1>${g.emoji} ${g.name}</h1><p>${g.desc}</p></div></div><div class="sectionhead"><h2>Goals & projects</h2><button class="link" onclick="addGoal('${id}')">＋ Add</button></div><div class="grid">${g.goals.map(x=>goalCard(g,x)).join("")}</div></div>`}
+function goalCard(g,x){let pct=x.milestones.length?Math.round(x.done.length/x.milestones.length*100):0;return `<button class="card goal" onclick="showGoal('${g.id}','${x.id}')" style="text-align:left;width:100%"><div class="goalplant">${x.achievements.length?'🌸':'🌱'}</div><div style="flex:1"><h3>${x.name}</h3><p>${x.desc}</p><div class="progress"><i style="width:${pct}%"></i></div></div></button>`}
+function showGoal(gid,xid){let g=state.gardens.find(x=>x.id===gid),x=g.goals.find(y=>y.id===xid),pct=x.milestones.length?Math.round(x.done.length/x.milestones.length*100):0;setTab(null);app.innerHTML=`<div class="app"><div class="detailHead"><button class="back" onclick="showGarden('${gid}')">‹</button><div class="detailTitle"><h1>${x.name}</h1><p>${g.name} · ${pct}% grown</p></div></div>
+<div class="hero"><div class="heroPlant">${x.achievements.length?`🌿🌸`:x.done.length?'🌱':'🌰'}</div><h2>${x.achievements.length?'Blooming':'Growing'}</h2><p class="sub">Every meaningful achievement becomes part of the garden.</p><button class="bloom" onclick="addAchievement('${gid}','${xid}')">✿ Bloom an achievement</button></div>
+<div class="card"><div class="sectionhead"><h2>Milestones</h2><button class="link" onclick="addMilestone('${gid}','${xid}')">＋ Add</button></div>${x.milestones.length?x.milestones.map((m,i)=>`<label class="milestone"><input type="checkbox" ${x.done.includes(i)?'checked':''} onchange="toggleMilestone('${gid}','${xid}',${i})"><span class="${x.done.includes(i)?'done':''}">${m}</span></label>`).join(""):'<div class="empty">No milestones yet.</div>'}</div>
+<div class="card" style="margin-top:14px"><div class="sectionhead"><h2>Achievements</h2></div>${x.achievements.length?x.achievements.slice().reverse().map((a,i)=>`<div class="ach"><div class="flowerIcon">🌸</div><div><strong>${a.text}</strong><small>${a.date}</small></div></div>`).join(""):'<div class="empty">Your first bloom will appear here.</div>'}</div>
+<div class="actions"><button class="secondary" onclick="editGoal('${gid}','${xid}')">Edit goal</button></div></div>`}
+function toggleMilestone(gid,xid,i){let x=state.gardens.find(g=>g.id===gid).goals.find(x=>x.id===xid);x.done=x.done.includes(i)?x.done.filter(n=>n!==i):[...x.done,i];save();showGoal(gid,xid)}
+function addAchievement(gid,xid){openModal(`<h2>🌸 Add achievement</h2><p class="sub">What did you actually achieve?</p><div class="field"><label>Achievement</label><input id="f1" placeholder="e.g. Finished the final animation"></div><button class="primary" onclick="saveAchievement('${gid}','${xid}')">Bloom</button><button class="cancel" onclick="closeModal()">Cancel</button>`)}
+function saveAchievement(gid,xid){let v=document.getElementById("f1").value.trim();if(!v)return;let g=state.gardens.find(x=>x.id===gid),x=g.goals.find(y=>y.id===xid);x.achievements.push({text:v,date:today()});save();closeModal();showGoal(gid,xid)}
+function addMilestone(gid,xid){openModal(`<h2>🍃 Add milestone</h2><div class="field"><label>Milestone</label><input id="f1" placeholder="What needs to happen?"></div><button class="primary" onclick="saveMilestone('${gid}','${xid}')">Add milestone</button><button class="cancel" onclick="closeModal()">Cancel</button>`)}
+function saveMilestone(gid,xid){let v=document.getElementById("f1").value.trim();if(!v)return;let x=state.gardens.find(g=>g.id===gid).goals.find(x=>x.id===xid);x.milestones.push(v);save();closeModal();showGoal(gid,xid)}
+function addGoal(gid){openModal(`<h2>🪴 New goal</h2><div class="field"><label>Name</label><input id="f1" placeholder="e.g. Learn guitar"></div><div class="field"><label>Description</label><textarea id="f2" placeholder="What are you growing toward?"></textarea></div><button class="primary" onclick="saveGoal('${gid}')">Create goal</button><button class="cancel" onclick="closeModal()">Cancel</button>`)}
+function saveGoal(gid){let n=document.getElementById("f1").value.trim();if(!n)return;let d=document.getElementById("f2").value.trim();state.gardens.find(g=>g.id===gid).goals.push({id:"g"+Date.now(),name:n,desc:d||"A goal worth growing.",milestones:[],done:[],achievements:[]});save();closeModal();showGarden(gid)}
+function openAddGarden(){openModal(`<h2>🌿 New garden</h2><div class="field"><label>Name</label><input id="f1" placeholder="e.g. Side Project"></div><div class="field"><label>Emoji</label><input id="f2" value="🌿" maxlength="2"></div><div class="field"><label>Description</label><textarea id="f3" placeholder="What belongs in this garden?"></textarea></div><button class="primary" onclick="saveGarden()">Create garden</button><button class="cancel" onclick="closeModal()">Cancel</button>`)}
+function saveGarden(){let n=document.getElementById("f1").value.trim();if(!n)return;state.gardens.push({id:"g"+Date.now(),name:n,emoji:document.getElementById("f2").value||"🌿",desc:document.getElementById("f3").value.trim()||"Things worth growing.",goals:[]});save();closeModal();showHome()}
+function editGoal(gid,xid){let x=state.gardens.find(g=>g.id===gid).goals.find(x=>x.id===xid);openModal(`<h2>Edit goal</h2><div class="field"><label>Name</label><input id="f1" value="${escapeHtml(x.name)}"></div><div class="field"><label>Description</label><textarea id="f2">${escapeHtml(x.desc)}</textarea></div><button class="primary" onclick="saveEditGoal('${gid}','${xid}')">Save changes</button><button class="cancel" onclick="closeModal()">Cancel</button>`)}
+function saveEditGoal(gid,xid){let x=state.gardens.find(g=>g.id===gid).goals.find(x=>x.id===xid);x.name=document.getElementById("f1").value.trim()||x.name;x.desc=document.getElementById("f2").value.trim();save();closeModal();showGoal(gid,xid)}
+function showJournal(){setTab("journalTab");let rows=[];state.gardens.forEach(g=>g.goals.forEach(x=>x.achievements.forEach(a=>rows.push({...a,garden:g.name,goal:x.name}))));rows.reverse();app.innerHTML=`<div class="app"><header><div><div class="brand">Journal</div><div class="tag">Your garden, over time.</div></div></header><div class="card">${rows.length?rows.map(a=>`<div class="journalItem"><div class="flowerIcon">🌸</div><div><strong>${a.text}</strong><small>${a.date} · ${a.goal}</small></div></div>`).join(""):'<div class="empty">No achievements yet. Your first bloom is waiting.</div>'}</div></div>`}
+function showSettings(){setTab("settingsTab");app.innerHTML=`<div class="app"><header><div><div class="brand">Settings</div><div class="tag">Keep your garden yours.</div></div></header><div class="card"><h3>Data</h3><p class="sub">Everything in this prototype is saved on this device using local storage.</p><button class="secondary" onclick="exportData()">Export my data</button></div><div class="card" style="margin-top:14px"><h3>Premium — later</h3><p class="sub">Placeholder for future botanical styles, extra gardens and richer experiences.</p></div><div class="card" style="margin-top:14px"><h3>Manilist</h3><p class="sub">Grow what matters.</p></div></div>`}
+function exportData(){let blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="manilist-data.json";a.click();URL.revokeObjectURL(a.href)}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function openModal(content){modal.innerHTML=`<div class="modalBack" onclick="if(event.target===this)closeModal()"><div class="sheet">${content}</div></div>`}
+function closeModal(){modal.innerHTML=""}
+showHome();
 </script>
-
 </body>
 </html>
